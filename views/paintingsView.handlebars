@@ -1,0 +1,37 @@
+<h1 class="text-center">Paintings</h1>
+{{#if data}}
+<div class="d-flex">
+<div style="width:50%;">
+    {{#each data}}
+    {{#unless this.Odd}}
+        <div class="card m-3">
+            <a href="/paintings/{{this.PaintingId}}">
+                <img src="data:{{this.PaintingMimetype}};base64,{{this.PaintingImage}}" alt="{{this.PaintingName}}" class="card-img-top">
+            </a>
+            <div class="card-body">
+                <h5 class="card-title">{{this.PaintingName}}</h5>
+                <p class="card-text">{{this.PaintingLength}} x {{this.PaintingWidth}} cm</p>
+            </div>
+        </div>
+    {{/unless}}
+    {{/each}}  
+</div>
+<div style="width:50%;">
+    {{#each data}}
+    {{#if this.Odd}}
+        <div class="card m-3">
+            <a href="/paintings/{{this.PaintingId}}">
+                <img src="data:{{this.PaintingMimetype}};base64,{{this.PaintingImage}}" alt="{{this.PaintingName}}" class="card-img-top">
+            </a>
+            <div class="card-body">
+                <h5 class="card-title">{{this.PaintingName}}</h5>
+                <p class="card-text">{{this.PaintingLength}} x {{this.PaintingWidth}} cm</p>
+            </div>
+        </div>
+    {{/if}}
+    {{/each}}  
+</div>
+</div>
+{{else}}
+<div class="text-center">Oops, there's nothing here</div>
+{{/if}}

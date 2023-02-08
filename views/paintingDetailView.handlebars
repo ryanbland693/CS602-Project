@@ -1,0 +1,35 @@
+<h1 class="text-center">{{data.PaintingName}}</h1>
+<div class="d-flex justify-content-center align-items-center flex-column">
+    <div class="d-flex justify-content-center align-items-center">
+        <img src="{{processed.imageUrl}}" alt="{{data.PaintingName}}"
+            class="mg-fluid w-50">
+    </div>
+    <div class="w-50 justify-content-center">
+        <table class="table mt-5 text-center">
+            <tr>
+                <th scope="row">Title</td>
+                <td>{{data.PaintingName}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Description</td>
+                <td>{{data.PaintingDescription}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Dimensions</td>
+                <td>{{processed.dimensions}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Price</td>
+                <td>{{processed.price}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Medium</td>
+                <td>{{data.MediumName}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Availability</td>
+                <td>{{data.AvailabilityName}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

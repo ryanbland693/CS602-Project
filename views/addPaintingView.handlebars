@@ -1,0 +1,46 @@
+<h1 class="text-center">Add Painting</h1>
+<form method="post" action="/admin/paintings/add" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="uploadImage" class="form-label">Image</label>
+        <input class="form-control" type="file" id="uploadImage" name="uploadImage">
+    </div>
+    <div class="mb-3">
+        <label for="paintingName" class="form-label">Name</label>
+        <input type="text" class="form-control" id="paintingName" name="paintingName" aria-describedby="Name of painting">
+    </div>
+    <div class="mb-3">
+        <label for="paintingDescription" class="form-label">Description</label>
+        <textarea class="form-control" id="paintingDescription" name="paintingDescription" rows="5"></textarea>
+    </div>
+    <div class="input-group col-md-2">
+        <label for="paintingPrice" class="form-label"></label><br>
+        <div class="input-group-text">Price (€)</div>
+        <input type="text" class="form-control" id="paintingPrice" name="paintingPrice" placeholder="10000">
+    </div>
+    <div>
+        <label for="paintingLength" class="form-label">Length</label>
+        <input type="text" class="form-control" id="paintingLength" name="paintingLength" placeholder="0">
+    </div>
+    <div class="mb-3">
+        <label for="paintingWidth" class="form-label">Width</label>
+        <input type="text" class="form-control" id="paintingWidth" name="paintingWidth" placeholder="0">
+    </div>
+    <div class="mb-3">
+        <label for="paintingMedium" class="form-label">Medium</label>
+        <select id="paintingMedium" name="paintingMedium" class="form-select" aria-label="Medium">
+            {{#each data.mediums}}
+            <option value="{{this}}">{{this}}</option>
+            {{/each}}
+        </select>
+    </div>
+    <div class="mb-5">
+        <label for="paintingAvailability" class="form-label">Availability</label>
+        <select id="paintingAvailability" name="paintingAvailability" class="form-select" aria-label="Availability">
+            {{#each data.availabilities}}
+            <option value="{{this}}">{{this}}</option>
+            {{/each}}
+        </select>
+    </div>
+
+    <button id="paintingForm" type="submit" class="btn btn-primary">Submit</button>
+</form>
