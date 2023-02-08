@@ -31,10 +31,6 @@ module.exports = class Painting {
         return `data:${this.PaintingMimetype};base64,${this.PaintingImage}`
     }
 
-    getDetailUrl() {
-        return `/paintings/${this.PaintingId}`
-    }
-
     getDimensions() {
         return `${this.PaintingLength} x ${this.PaintingWidth} cm`
     }

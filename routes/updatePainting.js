@@ -14,7 +14,6 @@ module.exports = async (req, res, next) =>  {
     ]
     db.query('CALL EditPainting(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', params, (err, result, fields) => {
         if (err) throw err;
-        console.log(result)
         res.redirect('/admin/paintings')
     })
 }

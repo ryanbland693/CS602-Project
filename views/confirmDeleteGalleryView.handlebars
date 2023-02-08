@@ -1,0 +1,10 @@
+<div class="d-flex justify-content-center align-items-center flex-column">
+    <h1>{{gallery.GalleryName}}</h1>
+    <img src="{{gallery.ImageUrl}}" alt="{{painting.PaintingName}}" class="w-50">
+    <p class="mt-5">You are about to delete this gallery!</p>
+    <div class="d-flex">
+        <form method="post" action="/admin/galleries/delete/{{gallery.GalleryId}}">
+            <input type="submit" class="btn btn-success mt-1 me-1" value="Confirm">
+        </form>
+    </div>
+</div>

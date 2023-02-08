@@ -19,7 +19,7 @@ module.exports = async (req, res, next) => {
                     price: data.getPrice()
                 }
             })
-        //console.log(result[0])
+
 
 
     })
