@@ -33,6 +33,12 @@
                     <li class="nav-item">
                         <a class="nav-link {{#if active.Paintings}}active{{/if}}" href="/paintings">Paintings</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{#if active.Galleries}}active{{/if}}" href="/galleries">Galleries</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{#if active.Exhibitions}}active{{/if}}" href="/exhibitions">Exhibitions</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle {{#if active.Admin}}active{{/if}}" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -41,14 +47,11 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/admin/paintings">Paintings</a></li>
                             <li><a class="dropdown-item" href="/admin/galleries">Galleries</a></li>
-                            <li><a class="dropdown-item" href="#">Exhibitions</a></li>
+                            <li><a class="dropdown-item" href="/admin/exhibitions">Exhibitions</a></li>
                         </ul>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-light" type="submit">Search</button>
-                </form>
+                
             </div>
         </div>
     </nav>

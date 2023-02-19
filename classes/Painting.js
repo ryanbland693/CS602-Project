@@ -1,9 +1,12 @@
-module.exports = class Painting {
+const DatabaseResult = require('./DatabaseResult')
+
+module.exports = class Painting extends DatabaseResult {
     constructor(PaintingId = undefined, PaintingImage = undefined,
         PaintingMimetype = undefined, PaintingName = undefined,
         PaintingDescription = undefined, PaintingPrice = undefined,
         PaintingLength = undefined, PaintingWidth = undefined,
         MediumName = undefined, AvailabilityName = undefined) {
+        super(DatabaseResult);
         this.PaintingId = PaintingId;
         this.PaintingImage = PaintingImage;
         this.PaintingMimetype = PaintingMimetype;
@@ -14,13 +17,6 @@ module.exports = class Painting {
         this.PaintingWidth = PaintingWidth;
         this.MediumName = MediumName;
         this.AvailabilityName = AvailabilityName;
-    }
-
-    fromRowData(rowData) {
-        for (const [key, value] of Object.entries(rowData)) {
-            this[key] = value;
-        }
-        return this;
     }
 
     isLandscape() {
@@ -37,6 +33,21 @@ module.exports = class Painting {
 
     getPrice() {
         return Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' }).format(this.PaintingPrice);
+    }
+
+    getDisplay(form = false) {
+        return {
+            PaintingId: this.PaintingId,
+            ImageUrl: this.getImage(),
+            PaintingName: this.PaintingName,
+            PaintingDescription: this.PaintingDescription,
+            PaintingPrice: form ? this.PaintingPrice : this.getPrice(),
+            PaintingLength: this.PaintingLength,
+            PaintingWidth: this.PaintingWidth,
+            PaintingDimensions: this.getDimensions(),
+            MediumName: this.MediumName,
+            AvailabilityName: this.AvailabilityName
+        }
     }
 
 }

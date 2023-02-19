@@ -1,0 +1,18 @@
+<h1 class="text-center">Exhibitions</h1>
+{{#if data}}
+<div class="text-center d-flex justify-content-center align-items-center flex-column">
+{{#each data}}
+<div class="card w-50">
+  <div class="card-header">
+    {{this.ExhibitionDate}}
+  </div>
+  <div class="card-body">
+      <h5 class="card-title">{{ExhibitionName}}</h5>
+      <a href="{{this.ExhibitionUrl}}" class="btn btn-primary">Visit</a>
+  </div>
+</div>
+{{/each}}
+</div>
+{{else}}
+<div class="text-center">Oops, there's nothing here</div>
+{{/if}}

@@ -1,8 +1,11 @@
-module.exports = class Gallery {
+const DatabaseResult = require('./DatabaseResult')
+
+module.exports = class Gallery extends DatabaseResult {
     constructor(GalleryId = undefined, GalleryImage = undefined,
         GalleryMimetype = undefined, GalleryName = undefined,
         GalleryCity = undefined, GalleryCountry = undefined,
         GalleryURL = undefined) {
+        super(DatabaseResult);
         this.GalleryId = GalleryId
         this.GalleryImage = GalleryImage
         this.GalleryMimetype = GalleryMimetype
@@ -12,14 +15,18 @@ module.exports = class Gallery {
         this.GalleryURL = GalleryURL
     }
 
-    fromRowData(rowData) {
-        for (const [key, value] of Object.entries(rowData)) {
-            this[key] = value;
-        }
-        return this;
-    }
-
     getImage() {
         return `data:${this.GalleryMimetype};base64,${this.GalleryImage}`
+    }
+
+    getDisplay() {
+        return {
+            GalleryId: this.GalleryId,
+            ImageUrl: this.getImage(),
+            GalleryName: this.GalleryName,
+            GalleryCity: this.GalleryCity,
+            GalleryCountry: this.GalleryCountry,
+            GalleryURL: this.GalleryURL
+        }
     }
 }

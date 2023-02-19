@@ -2,28 +2,28 @@
 <form method="post" action="/admin/paintings/add" enctype="multipart/form-data">
     <div class="mb-3">
         <label for="uploadImage" class="form-label">Image</label>
-        <input class="form-control" type="file" id="uploadImage" name="uploadImage">
+        <input class="form-control" type="file" id="uploadImage" name="uploadImage" required>
     </div>
     <div class="mb-3">
         <label for="paintingName" class="form-label">Name</label>
-        <input type="text" class="form-control" id="paintingName" name="paintingName" aria-describedby="Name of painting">
+        <input type="text" class="form-control" id="paintingName" name="paintingName" aria-describedby="Name of painting" required>
     </div>
     <div class="mb-3">
         <label for="paintingDescription" class="form-label">Description</label>
-        <textarea class="form-control" id="paintingDescription" name="paintingDescription" rows="5"></textarea>
+        <textarea class="form-control" id="paintingDescription" name="paintingDescription" rows="5" required></textarea>
     </div>
     <div class="input-group col-md-2">
         <label for="paintingPrice" class="form-label"></label><br>
         <div class="input-group-text">Price (€)</div>
-        <input type="text" class="form-control" id="paintingPrice" name="paintingPrice" placeholder="10000">
+        <input type="number" class="form-control" id="paintingPrice" name="paintingPrice" required>
     </div>
     <div>
         <label for="paintingLength" class="form-label">Length</label>
-        <input type="text" class="form-control" id="paintingLength" name="paintingLength" placeholder="0">
+        <input type="number" class="form-control" id="paintingLength" name="paintingLength" required>
     </div>
     <div class="mb-3">
         <label for="paintingWidth" class="form-label">Width</label>
-        <input type="text" class="form-control" id="paintingWidth" name="paintingWidth" placeholder="0">
+        <input type="number" class="form-control" id="paintingWidth" name="paintingWidth" required>
     </div>
     <div class="mb-3">
         <label for="paintingMedium" class="form-label">Medium</label>

@@ -6,13 +6,13 @@ const con = mysql.createPool({
     user: credentials.login,
     password: credentials.password,
     database: credentials.db,
-    multipleStatements:true
-
+    multipleStatements: true,
+    dateStrings: true
 })
 
 con.on('connection', (connection) => {
-    console.log('Database connected')   
-}, con.on('error', (err)=> {
+    console.log('Database connected')
+}, con.on('error', (err) => {
     if (err) throw err;
     console.log('Database error')
 }, con.on('close', (err) => {

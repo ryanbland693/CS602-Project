@@ -6,8 +6,8 @@ const helpers = require('handlebars-helpers')
 const app = express();
 
 // setup handlebars view engine
-app.engine('handlebars', 
-    handlebars.engine({defaultLayout: 'main'}));
+app.engine('handlebars',
+    handlebars.engine({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 

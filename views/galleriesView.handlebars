@@ -1,0 +1,15 @@
+<h1 class="text-center">Galleries</h1>
+{{#if data}}
+{{#each data}}
+<div class="card mx-auto my-3" style="width:25%">
+    <img src="{{this.ImageUrl}}" class="card-img-top" alt="{{this.GalleryName}}">
+    <div class="card-body">
+        <h5 class="card-title">{{this.GalleryName}}</h5>
+        <p class="card-text">{{this.GalleryCity}}, {{this.GalleryCountry}}</p>
+        <a href="{{this.GalleryURL}}" class="btn btn-primary">Visit</a>
+    </div>
+</div>
+{{/each}}
+{{else}}
+<div class="text-center">Oops, there's nothing here</div>
+{{/if}}

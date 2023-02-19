@@ -1,0 +1,14 @@
+<div class="d-flex justify-content-center align-items-center flex-column">
+    <h1>Delete Exhibition</h1>
+    <div class="card" style="width: 50%;">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{exhibition.ExhibitionName}}</li>
+            <li class="list-group-item">{{exhibition.ExhibitionDate}}</li>
+            <li class="list-group-item">{{exhibition.ExhibitionUrl}}</li>
+        </ul>
+    </div>
+    <p class="mt-5">You are about to delete this exhibition!</p>
+    <form method="post" action="/admin/exhibitions/delete/{{exhibition.ExhibitionId}}">
+            <input type="submit" class="btn btn-success mt-1 me-1" value="Confirm">
+        </form>
+</div>

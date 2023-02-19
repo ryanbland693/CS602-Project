@@ -1,0 +1,16 @@
+<h1 class="text-center">Edit Exhibition</h1>
+<form method="post" action="/admin/exhibitions/edit/{{data.ExhibitionId}}">
+    <div class="mb-3">
+        <label for="galleryName" class="form-label">Name</label>
+        <input type="text" class="form-control" id="exhibitionName" name="exhibitionName" aria-describedby="Name of Exhibition" value="{{data.ExhibitionName}}" required>
+    </div>
+    <div class="mb-3">
+        <label for="galleryCity" class="form-label">Date</label>
+        <input type="date" class="form-control" id="exhibitionDate" name="exhibitionDate" aria-describedby="City where gallery is located" value="{{data.ExhibitionDate}}" required>
+    </div>
+    <div class="mb-3">
+        <label for="galleryCountry" class="form-label">Website</label>
+        <input type="text" class="form-control" id="exhibitionUrl" name="exhibitionUrl" aria-describedby="Country where gallery is located" value="{{data.ExhibitionUrl}}" required>
+    </div>
+    <button id="exhibitionForm" type="submit" class="btn btn-primary">Submit</button>
+</form>

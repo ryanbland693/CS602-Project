@@ -1,0 +1,33 @@
+<h1 class="text-center">Exhibitions</h1>
+{{#if data}}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Date</th>
+            <th scope="col">Website</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each data}}
+        <tr>
+            <td>{{this.ExhibitionName}}</td>
+            <td>{{this.FormattedDate}}</td>
+            <td><a href="{{this.ExhibitionUrl}}">{{this.ExhibitionUrl}}</a></td>
+            <td>
+                <a href="/admin/exhibitions/edit/{{this.ExhibitionId}}">Edit</a>
+                <a href="/admin/exhibitions/delete/{{this.ExhibitionId}}">Delete</a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{else}}
+<div class="d-flex justify-content-center align-items-center flex-column">
+    Oops, there's nothing here yet
+</div>
+{{/if}}
+<div class="text-center mt-5">
+    <button onclick="goToAddExhibition();" id="addPainting" type="button" class="btn btn-primary">Add</button>
+</div>

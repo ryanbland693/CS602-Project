@@ -11,28 +11,28 @@
     <div class="mb-3">
         <label for="paintingName" class="form-label">Name</label>
         <input type="text" class="form-control" id="paintingName" name="paintingName"
-            aria-describedby="Name of painting" value="{{data.PaintingName}}">
+            aria-describedby="Name of painting" value="{{data.PaintingName}}" required>
     </div>
     <div class="mb-3">
         <label for="paintingDescription" class="form-label">Description</label>
         <textarea class="form-control" id="paintingDescription" name="paintingDescription"
-            rows="5">{{data.PaintingDescription}}</textarea>
+            rows="5" required>{{data.PaintingDescription}}</textarea>
     </div>
     <div class="input-group col-md-2">
         <label for="paintingPrice" class="form-label"></label><br>
         <div class="input-group-text">Price (€)</div>
-        <input type="text" class="form-control" id="paintingPrice" name="paintingPrice" placeholder="10000"
-            value="{{data.PaintingPrice}}">
+        <input type="number" class="form-control" id="paintingPrice" name="paintingPrice"
+            value="{{data.PaintingPrice}}" required>
     </div>
     <div>
         <label for="paintingLength" class="form-label">Length</label>
-        <input type="text" class="form-control" id="paintingLength" name="paintingLength" placeholder="0"
-            value="{{data.PaintingLength}}">
+        <input type="number" class="form-control" id="paintingLength" name="paintingLength"
+            value="{{data.PaintingLength}}" required>
     </div>
     <div class="mb-3">
         <label for="paintingWidth" class="form-label">Width</label>
-        <input type="text" class="form-control" id="paintingWidth" name="paintingWidth" placeholder="0"
-            value="{{data.PaintingWidth}}">
+        <input type="number" class="form-control" id="paintingWidth" name="paintingWidth"
+            value="{{data.PaintingWidth}}" required>
     </div>
     <div class="mb-3">
         <label for="paintingMedium" class="form-label">Medium</label>

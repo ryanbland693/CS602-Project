@@ -1,7 +1,7 @@
 module.exports = {
     login: 'root',
     password: 'root',
-    host : 'localhost',
-    db : 'cs602'
+    host: 'localhost',
+    db: 'cs602'
 }
 

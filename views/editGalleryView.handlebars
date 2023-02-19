@@ -1,0 +1,29 @@
+<h1 class="text-center">Edit Gallery</h1>
+<form method="post" action="/admin/galleries/edit/{{data.GalleryId}}" enctype="multipart/form-data">
+    <div class="d-flex justify-content-center align-items-center flex-column">
+        <img src="{{data.ImageUrl}}" alt="{{data.GalleryName}}" class="w-50">
+        <p class="fst-italic">Current Image</p>
+    </div>
+    <div class="mb-3">
+        <label for="uploadImage" class="form-label">Image</label>
+        <input class="form-control" type="file" id="uploadImage" name="uploadImage">
+    </div>
+    <div class="mb-3">
+        <label for="galleryName" class="form-label">Name</label>
+        <input type="text" class="form-control" id="paintingName" name="galleryName" aria-describedby="Name of Gallery" value="{{data.GalleryName}}" required>
+    </div>
+    <div class="mb-3">
+        <label for="galleryCity" class="form-label">City</label>
+        <input type="text" class="form-control" id="paintingName" name="galleryCity" aria-describedby="City where gallery is located" value="{{data.GalleryCity}}" required>
+    </div>
+    <div class="mb-3">
+        <label for="galleryCountry" class="form-label">Country</label>
+        <input type="text" class="form-control" id="paintingName" name="galleryCountry" aria-describedby="Country where gallery is located" value="{{data.GalleryCountry}}" required>
+    </div>
+    <div class="mb-3">
+        <label for="galleryUrl" class="form-label">Website</label>
+        <input type="text" class="form-control" id="paintingName" name="galleryUrl" aria-describedby="The gallery's website" value="{{data.GalleryURL}}" required>
+    </div>
+
+    <button id="paintingForm" type="submit" class="btn btn-primary">Submit</button>
+</form>
