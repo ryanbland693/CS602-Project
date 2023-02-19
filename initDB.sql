@@ -468,8 +468,9 @@ FROM
     JOIN availability ON paintings.AvailabilityID = availability.AvailabilityID
 WHERE MediumName = IFNULL(pMedium, MediumName)
 AND AvailabilityName = IFNULL(pAvailability, AvailabilityName)
-AND PaintingName LIKE CONCAT('%', IFNULL(pSearch, ''),'%');
-CALL SearchPaintings('Oil on Linen', 'Sold', 'Let');
+AND 
+(PaintingName LIKE CONCAT('%', IFNULL(pSearch, ''),'%') OR PaintingDescription LIKE CONCAT('%', IFNULL(pSearch, '') ,'%'));
+CALL SearchPaintings(NULL, 'Sold', 'still');
 SELECT * FROM paintings;
 
 
