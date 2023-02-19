@@ -448,9 +448,13 @@ SET
 WHERE
     ExhibitionId = pID;
 
-
 DROP PROCEDURE IF EXISTS SearchPaintings;
-CREATE PROCEDURE SearchPaintings(pMedium VARCHAR(255), pAvailability VARCHAR(64), pSearch VARCHAR(50))
+
+CREATE PROCEDURE SearchPaintings(
+    pMedium VARCHAR(255),
+    pAvailability VARCHAR(64),
+    pSearch VARCHAR(50)
+)
 SELECT
     PaintingId,
     PaintingImage,
@@ -466,15 +470,10 @@ FROM
     paintings
     JOIN mediums ON paintings.MediumID = mediums.MediumID
     JOIN availability ON paintings.AvailabilityID = availability.AvailabilityID
-WHERE MediumName = IFNULL(pMedium, MediumName)
-AND AvailabilityName = IFNULL(pAvailability, AvailabilityName)
-AND 
-(PaintingName LIKE CONCAT('%', IFNULL(pSearch, ''),'%') OR PaintingDescription LIKE CONCAT('%', IFNULL(pSearch, '') ,'%'));
-CALL SearchPaintings(NULL, 'Sold', 'still');
-SELECT * FROM paintings;
-
-
-
-
-
-
+WHERE
+    MediumName = IFNULL(pMedium, MediumName)
+    AND AvailabilityName = IFNULL(pAvailability, AvailabilityName)
+    AND (
+        PaintingName LIKE CONCAT('%', IFNULL(pSearch, ''), '%')
+        OR PaintingDescription LIKE CONCAT('%', IFNULL(pSearch, ''), '%')
+    );

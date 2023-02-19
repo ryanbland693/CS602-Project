@@ -1,4 +1,5 @@
 const DatabaseResult = require('./DatabaseResult')
+const json2xml = require('json2xml')
 
 module.exports = class Painting extends DatabaseResult {
     constructor(PaintingId = undefined, PaintingImage = undefined,
@@ -48,6 +49,24 @@ module.exports = class Painting extends DatabaseResult {
             MediumName: this.MediumName,
             AvailabilityName: this.AvailabilityName
         }
+    }
+
+    toJSON() {
+        return {
+            Painting: {
+                Title: this.PaintingName,
+                Description: this.PaintingDescription,
+                Page: `http://www.localhost:3000/paintings/${this.PaintingId}`,
+                Price: this.getPrice(),
+                Dimensions: this.getDimensions(),
+                Medium: this.MediumName,
+                Availability: this.AvailabilityName
+            }
+        }
+    }
+
+    toXML() {
+        return json2xml(this.toJSON())
     }
 
 }

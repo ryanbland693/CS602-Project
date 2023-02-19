@@ -1,4 +1,5 @@
 const DatabaseResult = require('./DatabaseResult')
+const json2xml = require('json2xml')
 
 module.exports = class Exhibiton extends DatabaseResult {
     constructor(pExhibitionId = undefined, pExhibitionDate = undefined, pExhibitionName = undefined, pExhibitionUrl = undefined) {
@@ -20,6 +21,20 @@ module.exports = class Exhibiton extends DatabaseResult {
             ExhibitionDate: form ? this.ExhibitionDate : this.formatDate(),
             ExhibitionUrl: this.ExhibitionUrl
         }
+    }
+
+    toJSON() {
+        return {
+            Exhibition: {
+                Name : this.ExhibitionName,
+                Date : this.formatDate(),
+                Website : this.ExhibitionUrl
+            }
+        }
+    }
+
+    toXML() {
+        return json2xml(this.toJSON())
     }
 
 }

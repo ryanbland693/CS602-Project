@@ -13,7 +13,6 @@ const upload = multer({
 const displayPaintings = require('./displayPaintings')
 const displayGalleries = require('./displayGalleries')
 const displayExhibitions = require('./displayExhibitions');
-const search = require('./search')
 
 const adminPaintings = require('./Admin/Paintings/adminPaintings')
 const addPaintingForm = require('./Admin/Paintings/addPaintingForm')
@@ -49,8 +48,6 @@ router.get('/paintings', displayPaintings)
 router.get('/paintings/:id', displayPaintingDetails)
 router.get('/galleries', displayGalleries)
 router.get('/exhibitions', displayExhibitions)
-router.get('/search', search)
-
 
 // Admin Routes
 
