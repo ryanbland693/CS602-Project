@@ -32,9 +32,9 @@ module.exports = async (req, res, next) => {
                 },
                 'application/xml': () => {
                     res.type('application/xml')
-                    let xmlData = '<Results>'
+                    let xmlData = '<Paintings>'
                     paintings.forEach(painting => xmlData += painting.toXML())
-                    res.send(xmlData + '</Results>')
+                    res.send(xmlData + '</Paintings>')
                 },
                 'text/html': () => {
                     const paintingData = paintings.map(painting => painting.getDisplay(form = false))

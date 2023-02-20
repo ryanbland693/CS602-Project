@@ -64,9 +64,4 @@ module.exports = class Painting extends DatabaseResult {
             }
         }
     }
-
-    toXML() {
-        return json2xml(this.toJSON())
-    }
-
 }

@@ -26,15 +26,11 @@ module.exports = class Exhibiton extends DatabaseResult {
     toJSON() {
         return {
             Exhibition: {
-                Name : this.ExhibitionName,
-                Date : this.formatDate(),
-                Website : this.ExhibitionUrl
+                Name: this.ExhibitionName,
+                Date: this.formatDate(),
+                Website: this.ExhibitionUrl
             }
         }
-    }
-
-    toXML() {
-        return json2xml(this.toJSON())
     }
 
 }

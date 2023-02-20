@@ -1,3 +1,5 @@
+json2xml = require('json2xml')
+
 module.exports = class DatabaseResult {
     constructor() { }
 
@@ -6,5 +8,15 @@ module.exports = class DatabaseResult {
             this[key] = value;
         }
         return this;
+    }
+
+    toJSON() {
+        return {
+            DatabaseResult : this
+        }
+    }
+
+    toXML() {
+        return json2xml(this.toJSON())
     }
 }

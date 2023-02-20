@@ -40,8 +40,4 @@ module.exports = class Gallery extends DatabaseResult {
             }
         }
     }
-
-    toXML() {
-        return json2xml(this.toJSON())
-    }
 }

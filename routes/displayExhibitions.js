@@ -17,9 +17,9 @@ module.exports = async (req, res, next) => {
             },
             'application/xml': () => {
                 res.type('application/xml')
-                let xmlData = '<Results>'
+                let xmlData = '<Exhibitions>'
                 exhibitions.forEach(exhibition => xmlData += exhibition.toXML())
-                res.send(xmlData + '</Results>')
+                res.send(xmlData + '</Exhibitions>')
             },
             'text/html': () => {
                 res.render('exhibitionsView', { active: { Exhibitions: true }, data: exhibitions.map(exhibition => exhibition.getDisplay()) })
