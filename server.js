@@ -20,6 +20,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 const routes = require('./routes/index');
 app.use('/', routes)
 
+app.use((req, res, next) => {
+
+    const error = new Error('Page not found');
+    error.status = 404;
+    next(error)
+})
+
+app.use((error, req, res, next) => {
+    console.log(error.message)
+    res.status = error.status || 500
+    res.render('error', { status: res.status, message: error.message })
+})
+
 app.listen(3000, () => {
     console.log('http://localhost:3000')
 })

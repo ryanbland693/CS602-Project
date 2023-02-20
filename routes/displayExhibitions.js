@@ -3,7 +3,12 @@ const Exhibition = require('../classes/Exhibition')
 
 module.exports = async (req, res, next) => {
     db.query('CALL GetExhibitions()', (err, result, fields) => {
-        if (err) return res.render('error', { status: 500, message: 'Server error', details: 'Something went wrong' })
+        if (err) {
+            const error = new Error('Server Error')
+            error.status = 500
+            next(error)
+            return
+        }
         const exhibitions = result[0].map(element => new Exhibition().fromRowData(element))
         res.format({
             'application/json': () => {
