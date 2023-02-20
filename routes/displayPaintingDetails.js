@@ -27,7 +27,6 @@ module.exports = async (req, res, next) => {
             },
             'text/html' : () => {
                 const paintingDisplay = data.getDisplay(form = false)
-                console.log(paintingDisplay)
                 res.render('paintingDetailView', { active: { Paintings: true }, paintingDisplay })
             }
         })
