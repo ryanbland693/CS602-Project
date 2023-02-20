@@ -11,11 +11,13 @@ Boston University
 This application has been created using Node.js/Express with a MySQL database. It stores information regarding an art website: namely the paintings the artist has created and exhibitions and galleries that the artist is involved with. 
 
 ## Setting up 
-To replicate this project in your own environment, first ensure that MySQL is installed. In MySQL, run in initDB.sql file. This will create a cs602 database with a number of tables and the availability/medium tables prefilled. The Painting, Exhibitions, and Galleries tables will be empty. From here, the project can optionally be started to view the website with no data.
+First install all dependencies listed in the package.json file.
+
+To replicate this project in your own environment, ensure that MySQL is installed and the service is running. In MySQL, run the initDB.sql file. This will create a cs602 database with a number of tables and the availability/medium tables prefilled. The Painting, Exhibitions, and Galleries tables will be empty. From here, the project can optionally be started to view the website with no data.
 
 **At this point you should ensure that the credentials.js file contains the information needed to connect to the database. It is assumed that the cs602 database will be used with the username "root" with a password of "root". Should you choose to change any of this information, make sure to reflect these changes in the credentials file.**
 
-To load data into the database, run the loadData.js file. This script uses the data in the prefillData folder to execute query on the database. Note that there is not a reference to an image placed in the database, rather the data is saved as a blob. 
+To load data into the database, run the loadData.js file. This script uses the data in the prefillData folder to execute queries on the database. Note that there is not a reference to an image placed in the database, rather the data is saved as a blob. 
 
 You can now start the web server, this can be done with either the **nodemon server** command or **npm start**. The application runs on port 3000.
 
@@ -31,6 +33,7 @@ From here you can open localhost:3000 to go to a static homepage. A typical user
     Here a list of the galleries uploaded to the database can be viewed. 
 
 3. Exhibitions
+
     Here a list of exhibitions uploaded to the database can be viewed.
 
 ## Admin Functionality
@@ -56,6 +59,8 @@ The publicly accessible endpoints are as follows:
 * /paintings/:id
 * /paintings?medium=*medium*&availability=*availability*&search=*search term*
     * eg: /paintings?medium=Oil+on+Panel&availability=Available&search=white
+    * if medium, availability or search is left empty, the filter will not be used
+    * if all three arguments are left empty, all results will be returned
 * /exhibitions
 * /galleries
 
