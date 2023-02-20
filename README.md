@@ -44,3 +44,22 @@ By using the Admin dropdown on the navigation bar, it is possible to add, remove
 
 ## Error Handling
 Only two types of errors should be display: 404 and 500. If any database query should fail for whatever reason, a 500 error will be displayed. If you attempt to visit a route that is not defined or use a parameter that is not supported, a 404 error will be displayed. You can test a 404 error by visiting http://localhost:3000/123. A 500 error can be tested by shutting down the MySQL service and visiting a webpage that relies on database connectivity.
+
+## Classes
+Classes are used to quickly transform a database object to a functional object which can be used to retrieve the necessary display information and display the object in JSON or XML along with several formatting methods. The Exhibition, Gallery, and Painting classes inherit from the DatabaseResult object which provides general functionality used across all three objects.
+
+## Endpoints
+In an actual production environment, the admin routes would be protected by authentication, and it would not be possible to submit post requests unless it is done through the form in the website. 
+
+The publicly accessible endpoints are as follows:
+* /paintings
+* /paintings/:id
+* /paintings?medium=*medium*&availability=*availability*&search=*search term*
+    * eg: /paintings?medium=Oil+on+Panel&availability=Available&search=white
+* /exhibitions
+* /galleries
+
+You can use the following values in the Accept header:
+1. application/json
+2. application/xml
+3. text/html
