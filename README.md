@@ -59,8 +59,8 @@ The publicly accessible endpoints are as follows:
 * /paintings/:id
 * /paintings?medium=*medium*&availability=*availability*&search=*search term*
     * eg: /paintings?medium=Oil+on+Panel&availability=Available&search=white
-    * if medium, availability or search is left empty, the filter will not be used
-    * if all three arguments are left empty, all results will be returned
+    * if medium, availability or search is left empty, the corresponding filter will not be used
+    * if all three arguments are left empty, all paintings will be returned
 * /exhibitions
 * /galleries
 
