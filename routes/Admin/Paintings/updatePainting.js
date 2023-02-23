@@ -7,7 +7,7 @@ module.exports = async (req, res, next) => {
         req.file !== undefined ? req.file.mimetype : null,
         req.body.paintingName,
         req.body.paintingDescription,
-        parseInt(req.body.paintingPrice),
+        req.body.paintingPrice ? parseInt(req.body.paintingPrice) : null,
         parseInt(req.body.paintingLength),
         parseInt(req.body.paintingWidth),
         req.body.paintingMedium,

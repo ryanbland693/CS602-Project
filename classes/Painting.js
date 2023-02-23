@@ -47,7 +47,8 @@ module.exports = class Painting extends DatabaseResult {
             PaintingWidth: this.PaintingWidth,
             PaintingDimensions: this.getDimensions(),
             MediumName: this.MediumName,
-            AvailabilityName: this.AvailabilityName
+            AvailabilityName: this.AvailabilityName,
+            showPrice : this.AvailabilityName === 'Available' && this.PaintingPrice != null
         }
     }
 

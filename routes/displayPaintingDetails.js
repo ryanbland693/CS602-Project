@@ -30,8 +30,7 @@ module.exports = async (req, res, next) => {
                 res.render('paintingDetailView', { active: { Paintings: true }, paintingDisplay })
             }
         })
-        // res.render('paintingDetailView', { active: { Paintings: true }, data })
-
+      
 
 
     })

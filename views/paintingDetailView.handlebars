@@ -18,10 +18,12 @@
                 <th scope="row">Dimensions</td>
                 <td>{{paintingDisplay.PaintingDimensions}}</td>
             </tr>
+            {{#if paintingDisplay.showPrice}}
             <tr>
                 <th scope="row">Price</td>
                 <td>{{paintingDisplay.PaintingPrice}}</td>
             </tr>
+            {{/if}}
             <tr>
                 <th scope="row">Medium</td>
                 <td>{{paintingDisplay.MediumName}}</td>
