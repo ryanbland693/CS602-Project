@@ -8,7 +8,7 @@ Boston University
 ---
 
 ## Background
-This application has been created using Node.js/Express with a MySQL database. It stores information regarding an art website: namely the paintings the artist has created and exhibitions and galleries that the artist is involved with. 
+This application has been created using Node.js/Express with a MySQL database. It stores information regarding an art website: namely the paintings the artist has created and exhibitions and galleries that the artist is involved with. The front end has been done with Bootstrap.
 
 ## Setting up 
 First install all dependencies listed in the package.json file.
@@ -17,7 +17,7 @@ To replicate this project in your own environment, ensure that MySQL is installe
 
 **At this point you should ensure that the credentials.js file contains the information needed to connect to the database. It is assumed that the cs602 database will be used with the username "root" with a password of "root". Should you choose to change any of this information, make sure to reflect these changes in the credentials file.**
 
-To load data into the database, run the loadData.js file. This script uses the data in the prefillData folder to execute queries on the database. Note that there is not a reference to an image placed in the database, rather the data is saved as a blob. 
+To load data into the database, run the loadData.js file. This script uses the data in the prefillData folder to execute insert statements on the database. Note that there is not a reference to an image placed in the database, rather the data is saved as a blob. Images will not appear in the public/images folder.
 
 You can now start the web server, this can be done with either the **nodemon server** command or **npm start**. The application runs on port 3000.
 
@@ -46,7 +46,7 @@ By using the Admin dropdown on the navigation bar, it is possible to add, remove
 * Deleting: A confirmation screen will be display. Upon confirming, the object will be removed from the database.
 
 ## Error Handling
-Only two types of errors should be display: 404 and 500. If any database query should fail for whatever reason, a 500 error will be displayed. If you attempt to visit a route that is not defined or use a parameter that is not supported, a 404 error will be displayed. You can test a 404 error by visiting http://localhost:3000/123. A 500 error can be tested by shutting down the MySQL service and visiting a webpage that relies on database connectivity.
+Only two types of errors should be displayed: 404 and 500. If any database query should fail for whatever reason, a 500 error will be displayed. If you attempt to visit a route that is not defined or use a parameter that is not supported, a 404 error will be displayed. You can test a 404 error by visiting http://localhost:3000/123. A 500 error can be tested by shutting down the MySQL service and visiting a webpage that relies on database connectivity.
 
 ## Classes
 Classes are used to quickly transform a database object to a functional object which can be used to retrieve the necessary display information and display the object in JSON or XML along with several formatting methods. The Exhibition, Gallery, and Painting classes inherit from the DatabaseResult object which provides general functionality used across all three objects.
@@ -68,3 +68,27 @@ You can use the following values in the Accept header:
 1. application/json
 2. application/xml
 3. text/html
+
+There are also 'Admin' endpoints that are used to edit, delete, and add new items. The GET requests to add, delete and edit will bring up a form for adding and editing and a confirmation screen for deleting. Choosing to edit an item will bring up a form similar to the add form, but the form will be prepopulated with the data already in the database. From these pages, a post request can be made to perform the associated action. 
+
+* /admin/paintings
+* /admin/paintings/add
+    * GET and POST
+* /admin/paintings/delete/:id
+    * GET and POST
+* /admin/paintings/edit/:id
+    * GET and POST
+* /admin/galleries
+* /admin/galleries/add
+    * GET and POST
+* /admin/galleries/delete/:id
+    * GET and POST
+* /admin/galleries/edit/:id
+    * GET and POST
+* /admin/exhibitions
+* /admin/exhibitions/add
+    * GET and POST
+* /admin/exhibitions/delete/:id
+    * GET and POST
+* /admin/exhibitions/edit/:id
+    * GET and POST
