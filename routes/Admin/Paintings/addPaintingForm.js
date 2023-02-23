@@ -2,7 +2,7 @@ const db = require('../../../db')
 const ErrorHandler = require('../../../classes/ErrorHandler')
 
 module.exports = async (req, res, next) => {
-    db.query('CALL GetMediums(); CALL GetAvailabilities', (err, result, fields) => {
+    db.query('CALL GetMediums(); CALL GetAvailabilities()', (err, result, fields) => {
         if (err) {
             return next(new ErrorHandler(500).getError())
         }
