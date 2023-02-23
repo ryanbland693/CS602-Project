@@ -69,7 +69,7 @@ You can use the following values in the Accept header:
 2. application/xml
 3. text/html
 
-There are also 'Admin' endpoints that are used to edit, delete, and add new items. The GET requests to add, delete and edit will bring up a form for adding and editing and a confirmation screen for deleting. Choosing to edit an item will bring up a form similar to the add form, but the form will be prepopulated with the data already in the database. From these pages, a post request can be made to perform the associated action. 
+There are also 'Admin' endpoints that are used to edit, delete, and add new items. The GET requests to add, delete and edit will bring up a form for adding and editing and a confirmation screen for deleting. Choosing to edit an item will bring up a form similar to the add form, but the form will be prepopulated with the data already in the database. From these pages, a post request can be made to perform the associated action. Each option in the navigation bar will bring the user to the correspondening administration page of the item in which all items can be viewed with their details. 
 
 * /admin/paintings
 * /admin/paintings/add

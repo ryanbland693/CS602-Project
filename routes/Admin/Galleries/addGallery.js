@@ -1,4 +1,5 @@
 const db = require("../../../db")
+const ErrorHandler = require('../../../classes/ErrorHandler')
 
 module.exports = async (req, res, next) => {
     const params = [req.file.buffer.toString('base64'),
@@ -10,10 +11,7 @@ module.exports = async (req, res, next) => {
     ]
     db.query('CALL AddGallery(?, ?, ?, ?, ?, ?)', params, (err, result, fields) => {
         if (err) {
-            const error = new Error('Server Error')
-            error.status = 500
-            next(error)
-            return
+            return next(new ErrorHandler(500).getError())
         }
         res.redirect('/admin/galleries')
     })

@@ -1,13 +1,11 @@
 const db = require('../db')
 const Exhibition = require('../classes/Exhibition')
+const ErrorHandler = require('../classes/ErrorHandler')
 
 module.exports = async (req, res, next) => {
     db.query('CALL GetExhibitions()', (err, result, fields) => {
         if (err) {
-            const error = new Error('Server Error')
-            error.status = 500
-            next(error)
-            return
+            return next(new ErrorHandler(500).getError())
         }
         const exhibitions = result[0].map(element => new Exhibition().fromRowData(element))
         res.format({

@@ -1,5 +1,6 @@
 const db = require('../db');
 const Painting = require('../classes/Painting');
+const ErrorHandler = require('../classes/ErrorHandler')
 
 module.exports = async (req, res, next) => {
     params = [
@@ -9,20 +10,14 @@ module.exports = async (req, res, next) => {
     ]
     db.query('CALL GetMediums(); CALL GetAvailabilities()', (err, result, fields) => {
         if (err) {
-            const error = new Error('Server Error')
-            error.status = 500
-            next(error)
-            return
+            return next(new ErrorHandler(500).getError())
         }
         const mediumsOptions = result[0].map(element => ({ MediumName: element.MediumName, selected: element.MediumName === params[0] }))
         const availabilitiesOptions = result[2].map(element => ({ AvailabilityName: element.AvailabilityName, selected: element.AvailabilityName === params[1] }))
         availabilitiesOptions.forEach(availability => availability.selected = availability.AvailabilityName === params[1])
         db.query(Object.keys(req.query).length === 0 ? 'CALL GetPaintings()' : 'CALL SearchPaintings(?, ?, ?)', params, (err, result, fields) => {
             if (err) {
-                const error = new Error('Server Error')
-                error.status = 500
-                next(error)
-                return
+                return next(new ErrorHandler(500).getError())
             }
             const paintings = result[0].map(element => new Painting().fromRowData(element))
             res.format({

@@ -1,4 +1,5 @@
 const db = require('../../../db')
+const ErrorHandler = require('../../../classes/ErrorHandler')
 
 module.exports = async (req, res, next) => {
     const params = [
@@ -8,9 +9,7 @@ module.exports = async (req, res, next) => {
     ]
     db.query('CALL AddExhibition(?, ?, ?)', params, (err, result, fields) => {
         if (err) {
-            const error = new Error('Server Error')
-            error.status = 500;
-            next(err)
+            return next(new ErrorHandler(500).getError())
         }
         res.redirect('/admin/exhibitions')
     })

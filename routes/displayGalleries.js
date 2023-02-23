@@ -1,13 +1,11 @@
 const db = require('../db');
 const Gallery = require('../classes/Gallery');
+const ErrorHandler = require('../classes/ErrorHandler')
 
 module.exports = async (req, res, next) => {
     db.query('CALL GetGalleries()', (err, result, fields) => {
         if (err) {
-            const error = new Error('Server Error')
-            error.status = 500
-            next(error)
-            return
+            return next(new ErrorHandler(500).getError())
         }
         const galleries = result[0].map(element => new Gallery().fromRowData(element));
         res.format({
