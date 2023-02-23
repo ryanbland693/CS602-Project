@@ -51,6 +51,8 @@ Only two types of errors should be displayed: 404 and 500. If any database query
 ## Classes
 Classes are used to quickly transform a database object to a functional object which can be used to retrieve the necessary display information and display the object in JSON or XML along with several formatting methods. The Exhibition, Gallery, and Painting classes inherit from the DatabaseResult object which provides general functionality used across all three objects.
 
+An ErrorHandler class was also made to more easily throw errors to the error page.
+
 ## Endpoints
 In an actual production environment, the admin routes would be protected by authentication, and it would not be possible to submit post requests unless it is done through the form in the website. 
 
