@@ -477,3 +477,20 @@ WHERE
         PaintingName LIKE CONCAT('%', IFNULL(pSearch, ''), '%')
         OR PaintingDescription LIKE CONCAT('%', IFNULL(pSearch, ''), '%')
     );
+
+DROP PROCEDURE IF EXISTS GetFormEnumerations;
+
+CREATE PROCEDURE GetFormEnumerations()
+SELECT
+    'Medium' AS ItemType,
+    MediumName AS ItemName
+FROM
+    mediums
+UNION
+SELECT
+    'Availability',
+    AvailabilityName
+FROM
+    availability;
+
+CALL GetFormEnumerations();
