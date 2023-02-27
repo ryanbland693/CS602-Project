@@ -26,6 +26,13 @@
         <input type="number" class="form-control" id="paintingWidth" name="paintingWidth" required>
     </div>
     <div class="mb-3">
+        <label for="paintingVisible" class="form-label">Medium</label>
+        <select id="paintingVisible" name="paintingVisible" class="form-select" aria-label="Displayed on website">
+            <option selected value="true">true</option>
+            <option value="false">false</option>
+        </select>
+    </div>
+    <div class="mb-3">
         <label for="paintingMedium" class="form-label">Medium</label>
         <select id="paintingMedium" name="paintingMedium" class="form-select" aria-label="Medium">
             {{#each data.mediums}}

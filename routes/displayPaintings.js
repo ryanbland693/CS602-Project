@@ -8,9 +8,8 @@ module.exports = async (req, res, next) => {
         req.query.availability || null,
         req.query.search || null
     ]
-    db.query((Object.keys(req.query).length === 0 ? 'CALL GetPaintings();' : 'CALL SearchPaintings(?, ?, ?);'), params, (err, result, fields) => {
+    db.query((Object.keys(req.query).length === 0 ? 'CALL GetVisiblePaintings();' : 'CALL SearchPaintings(?, ?, ?);'), params, (err, result, fields) => {
         if (err) {
-            console.log(err)
             return next(new ErrorHandler(500).getError())
         }
         const paintings = result[0].map(element => new Painting().fromRowData(element))

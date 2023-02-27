@@ -7,6 +7,7 @@ module.exports = async (req, res, next) => {
         if (err) {
             return next(new ErrorHandler(500).getError())
         }
+        
         const paintings = result[0].map(element => new Painting().fromRowData(element).getDisplay(form = true))
         res.render('adminPaintingsView',
             { active: { Admin: true }, data: paintings })

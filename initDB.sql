@@ -33,6 +33,7 @@ CREATE TABLE paintings (
     PaintingPrice INT NULL,
     PaintingLength SMALLINT NOT NULL,
     PaintingWidth SMALLINT NOT NULL,
+    PaintingVisible BOOLEAN NOT NULL,
     MediumID CHAR(36) NOT NULL,
     AvailabilityID CHAR(36) NOT NULL,
     FOREIGN KEY (MediumID) REFERENCES mediums(MediumID),
@@ -125,6 +126,7 @@ CREATE PROCEDURE AddPainting(
     pPaintingPrice INT,
     pPaintingLength SMALLINT,
     pPaintingWidth SMALLINT,
+    pPaintingVisible BOOLEAN,
     pMediumName VARCHAR(255),
     pAvailabilityName VARCHAR(64)
 )
@@ -138,6 +140,7 @@ INSERT INTO
         Paintingprice,
         PaintingLength,
         PaintingWidth,
+        PaintingVisible,
         MediumId,
         AvailabilityId
     )
@@ -154,6 +157,7 @@ VALUES
         pPaintingPrice,
         ppaintingLength,
         pPaintingWidth,
+        pPaintingVisible,
         (
             SELECT
                 MediumID
@@ -184,12 +188,33 @@ SELECT
     PaintingPrice,
     PaintingLength,
     PaintingWidth,
+    PaintingVisible,
     MediumName,
     AvailabilityName
 FROM
     paintings
     JOIN mediums ON paintings.MediumID = mediums.MediumID
     JOIN availability ON paintings.AvailabilityID = availability.AvailabilityID;
+    
+DROP PROCEDURE IF EXISTS GetVisiblePaintings;
+CREATE PROCEDURE GetVisiblePaintings()
+SELECT
+    PaintingId,
+    PaintingImage,
+    PaintingMimetype,
+    PaintingName,
+    PaintingDescription,
+    PaintingPrice,
+    PaintingLength,
+    PaintingWidth,
+    MediumName,
+    AvailabilityName
+FROM
+    paintings
+    JOIN mediums ON paintings.MediumID = mediums.MediumID
+    JOIN availability ON paintings.AvailabilityID = availability.AvailabilityID
+WHERE PaintingVisible = true;
+
 
 DROP PROCEDURE IF EXISTS GetPaintingById;
 
@@ -203,6 +228,7 @@ SELECT
     PaintingPrice,
     PaintingLength,
     PaintingWidth,
+    PaintingVisible,
     MediumName,
     AvailabilityName
 FROM
@@ -231,6 +257,7 @@ CREATE PROCEDURE EditPainting(
     pPaintingPrice INT,
     pPaintingLength SMALLINT,
     pPaintingWidth SMALLINT,
+    pPaintingVisibility BOOLEAN,
     pMediumName VARCHAR(255),
     pAvailabilityName VARCHAR(64)
 )
@@ -252,6 +279,7 @@ SET
     PaintingPrice = pPaintingPrice,
     PaintingLength = pPaintingLength,
     PaintingWidth = pPaintingWidth,
+    PaintingVisibility=pPaintingVisibility,
     MediumId = (
         SELECT
             MediumID
@@ -493,4 +521,3 @@ SELECT
 FROM
     availability;
 
-CALL GetFormEnumerations();

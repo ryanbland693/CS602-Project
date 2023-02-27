@@ -12,9 +12,9 @@ console.log('Adding Paintings...')
 paintings.forEach(painting => {
     fs.readFile(path.join(__dirname, '/prefillData/paintings/', painting.PaintingFile), (err, buffer) => {
         if (err) throw err;
-        db.query('CALL AddPainting(?, ?, ?, ?, ?, ?, ?, ?, ?)',
+        db.query('CALL AddPainting(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
             [buffer.toString('base64'), mime.lookup(painting.PaintingFile), painting.PaintingName, painting.PaintingDescription, 
-                painting.PaintingPrice, painting.PaintingLength, painting.PaintingWidth, painting.MediumName, painting.AvailabilityName], (err, result, fields) => {
+                painting.PaintingPrice, painting.PaintingLength, painting.PaintingWidth, true, painting.MediumName, painting.AvailabilityName], (err, result, fields) => {
                 if (err) throw err;
             })
     })

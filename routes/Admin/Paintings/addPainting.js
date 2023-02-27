@@ -10,10 +10,11 @@ module.exports = async (req, res, next) => {
         req.body.paintingPrice ? parseInt(req.body.paintingPrice) : null,
         parseInt(req.body.paintingLength),
         parseInt(req.body.paintingWidth),
+        req.body.paintingVisible === 'true',
         req.body.paintingMedium,
         req.body.paintingAvailability
     ]
-    db.query('CALL AddPainting(?, ?, ?, ?, ?, ?, ?, ?, ?)', params, (err, result, fields) => {
+    db.query('CALL AddPainting(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', params, (err, result, fields) => {
         if (err) {
             return next(new ErrorHandler(500).getError())
         }

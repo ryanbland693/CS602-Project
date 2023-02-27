@@ -6,7 +6,7 @@ module.exports = class Painting extends DatabaseResult {
         PaintingMimetype = undefined, PaintingName = undefined,
         PaintingDescription = undefined, PaintingPrice = undefined,
         PaintingLength = undefined, PaintingWidth = undefined,
-        MediumName = undefined, AvailabilityName = undefined) {
+        PaintingVisible = undefined, MediumName = undefined, AvailabilityName = undefined) {
         super(DatabaseResult);
         this.PaintingId = PaintingId;
         this.PaintingImage = PaintingImage;
@@ -16,6 +16,7 @@ module.exports = class Painting extends DatabaseResult {
         this.PaintingPrice = PaintingPrice;
         this.PaintingLength = PaintingLength;
         this.PaintingWidth = PaintingWidth;
+        this.PaintingVisible = PaintingVisible;
         this.MediumName = MediumName;
         this.AvailabilityName = AvailabilityName;
     }
@@ -36,6 +37,10 @@ module.exports = class Painting extends DatabaseResult {
         return Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' }).format(this.PaintingPrice);
     }
 
+    isVisible() {
+        return this.PaintingVisible === 1;
+    }
+
     getDisplay(form = false) {
         return {
             PaintingId: this.PaintingId,
@@ -46,6 +51,7 @@ module.exports = class Painting extends DatabaseResult {
             PaintingLength: this.PaintingLength,
             PaintingWidth: this.PaintingWidth,
             PaintingDimensions: this.getDimensions(),
+            PaintingVisible : this.isVisible(),
             MediumName: this.MediumName,
             AvailabilityName: this.AvailabilityName,
             showPrice : this.AvailabilityName === 'Available' && this.PaintingPrice != null
