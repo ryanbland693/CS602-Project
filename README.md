@@ -77,25 +77,26 @@ You can use the following values in the Accept header:
 3. text/html
 
 There are also 'Admin' endpoints that are used to edit, delete, and add new items. The GET requests to add, delete and edit will bring up a form for adding and editing and a confirmation screen for deleting. Choosing to edit an item will bring up a form similar to the add form, but the form will be prepopulated with the data already in the database. From these pages, a post request can be made to perform the associated action. Each option in the navigation bar will bring the user to the correspondening administration page of the item in which all items can be viewed with their details. 
-
-* /admin/paintings
-* /admin/paintings/add
-    * GET and POST
-* /admin/paintings/delete/:id
-    * GET and POST
-* /admin/paintings/edit/:id
-    * GET and POST
-* /admin/galleries
-* /admin/galleries/add
-    * GET and POST
-* /admin/galleries/delete/:id
-    * GET and POST
-* /admin/galleries/edit/:id
-    * GET and POST
-* /admin/exhibitions
-* /admin/exhibitions/add
-    * GET and POST
-* /admin/exhibitions/delete/:id
-    * GET and POST
-* /admin/exhibitions/edit/:id
-    * GET and POST
+| Route                         | Method    | File                                          |
+|-------------------------------|-----------|-----------------------------------------------|
+|/admin/paintings               |GET        |/Admin/Paintings/adminPaintings.js             |
+|/admin/paintings/add           |GET        |/Admin/Paintings/addPaintingForm.js            |
+|/admin/paintings/add           |POST       |/Admin/Paintings/addPainting.js                |
+|/admin/paintings/delete/:id    |GET        |/Admin/Paintings/confirmDeletePainting.js      |
+|/admin/paintings/delete/:id    |POST       |/Admin/Paintings/deletePainting.js             |
+|/admin/paintings/edit/:id      |GET        |/Admin/Paintings/editPainting.js               |
+|/admin/paintings/edit/:id      |POST       |/Admin/Paintings/updatePainting.js             |
+|/admin/galleries               |GET        |/Admin/Galleries/adminGalleries.js             |
+|/admin/galleries/add           |GET        |/Admin/Galleries/addGalleryForm.js             |
+|/admin/galleries/add           |POST       |/Admin/Galleries/addGallery.js                 |
+|/admin/galleries/delete/:id    |GET        |/Admin/Galleries/confirmDeleteGallery.js       |
+|/admin/galleries/delete/:id    |POST       |/Admin/Galleries/deleteGallery.js              |
+|/admin/galleries/edit/:id      |GET        |/Admin/Galleries/editGallery.js                |
+|/admin/galleries/edit/:id      |POST       |/Admin/Galleries/updateGallery.js              |
+|/admin/exhibitions             |GET        |/Admin/Exhibitions/adminExhibitions.js         |
+|/admin/exhibitions/add         |GET        |/Admin/Exhibitions/addExhibitionForm.js        |
+|/admin/exhibitions/add         |POST       |/Admin/Exhibitions/addExhibition.js            |
+|/admin/exhibitions/delete/:id  |GET        |/Admin/Exhibitions/confirmDeleteExhibition.js  |
+|/admin/exhibitions/delete/:id  |POST       |/Admin/Exhibitions/deleteExhibition.js         |
+|/admin/exhibitions/edit/:id    |GET        |/Admin/Exhibitions/editExhibition.js           |
+|/admin/exhibitions/edit/:id    |POST       |/Admin/Exhibitions/updateExhibition.js         |
