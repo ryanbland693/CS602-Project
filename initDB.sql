@@ -195,8 +195,9 @@ FROM
     paintings
     JOIN mediums ON paintings.MediumID = mediums.MediumID
     JOIN availability ON paintings.AvailabilityID = availability.AvailabilityID;
-    
+
 DROP PROCEDURE IF EXISTS GetVisiblePaintings;
+
 CREATE PROCEDURE GetVisiblePaintings()
 SELECT
     PaintingId,
@@ -213,8 +214,8 @@ FROM
     paintings
     JOIN mediums ON paintings.MediumID = mediums.MediumID
     JOIN availability ON paintings.AvailabilityID = availability.AvailabilityID
-WHERE PaintingVisible = true;
-
+WHERE
+    PaintingVisible = true;
 
 DROP PROCEDURE IF EXISTS GetPaintingById;
 
@@ -279,7 +280,7 @@ SET
     PaintingPrice = pPaintingPrice,
     PaintingLength = pPaintingLength,
     PaintingWidth = pPaintingWidth,
-    PaintingVisibility=pPaintingVisibility,
+    PaintingVisibility = pPaintingVisibility,
     MediumId = (
         SELECT
             MediumID
@@ -520,4 +521,3 @@ SELECT
     AvailabilityName
 FROM
     availability;
-
