@@ -8,6 +8,8 @@ module.exports = class ErrorHandler {
         switch (status || this.status) {
             case 404: 
                 return 'Page not found'
+            case 410:
+                return 'This page is no longer available'
             case 500:
                 return 'Server Error'
             default:

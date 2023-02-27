@@ -11,6 +11,9 @@ module.exports = async (req, res, next) => {
             return next(new ErrorHandler(404).getError())
         }
         const data = new Painting().fromRowData(result[0][0])
+        if (!data.PaintingVisible) {
+            return next(new ErrorHandler(410).getError())
+        }
         res.format({
             'application/json' : () => {
                 res.json(data.toJSON())
