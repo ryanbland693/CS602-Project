@@ -16,7 +16,8 @@ First install all dependencies listed in the package.json file.
 To replicate this project in your own environment, ensure that MySQL is installed and the service is running. In MySQL, run the initDB.sql file. This will create a cs602 database with a number of tables and the availability/medium tables prefilled. The Painting, Exhibitions, and Galleries tables will be empty. From here, the project can optionally be started to view the website with no data.
 
 The following database schema is used.
-![schema](/database_schema.png)
+
+<img src="./database_schema.png" alt="schema" style="width:100%">
 
 **At this point you should ensure that the credentials.js file contains the information needed to connect to the database. It is assumed that the cs602 database will be used with the username "root" with a password of "root". Should you choose to change any of this information, make sure to reflect these changes in the credentials file.**
 
