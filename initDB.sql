@@ -258,7 +258,7 @@ CREATE PROCEDURE EditPainting(
     pPaintingPrice INT,
     pPaintingLength SMALLINT,
     pPaintingWidth SMALLINT,
-    pPaintingVisibility BOOLEAN,
+    pPaintingVisible BOOLEAN,
     pMediumName VARCHAR(255),
     pAvailabilityName VARCHAR(64)
 )
@@ -280,7 +280,7 @@ SET
     PaintingPrice = pPaintingPrice,
     PaintingLength = pPaintingLength,
     PaintingWidth = pPaintingWidth,
-    PaintingVisibility = pPaintingVisibility,
+    PaintingVisible = pPaintingVisible,
     MediumId = (
         SELECT
             MediumID

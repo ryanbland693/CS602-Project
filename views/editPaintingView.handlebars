@@ -35,7 +35,7 @@
             value="{{data.PaintingWidth}}" required>
     </div>
     <div class="mb-3">
-        <label for="paintingVisible" class="form-label">Medium</label>
+        <label for="paintingVisible" class="form-label">Visible</label>
         <select id="paintingVisible" name="paintingVisible" class="form-select" aria-label="Displayed on website">
             <option {{#if data.PaintingVisible}}selected="selected"{{/if}} value="true">true</option>
             <option {{#unless data.PaintingVisible}}selected="selected"{{/unless}}value="false">false</option>

@@ -17,6 +17,7 @@ module.exports = async (req, res, next) => {
     ]
     db.query('CALL EditPainting(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', params, (err, result, fields) => {
         if (err) {
+            console.log(err)
             return next(new ErrorHandler(500).getError())
             
         }

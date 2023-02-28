@@ -5,9 +5,12 @@ const ErrorHandler = require('../../../classes/ErrorHandler')
 module.exports = async (req, res, next) => {
     db.query('CALL GetPaintingById(?);', [req.params.id], (err, result, fields) => {
         if (err) {
+            console.log('here1')
             return next(new ErrorHandler(500).getError())
+            
         }
         if (result.length !== 2) {
+            console.log('here2')
             return next(new ErrorHandler(404).getError())
         }
         const data = new Painting().fromRowData(result[0][0]).getDisplay(form = true)
