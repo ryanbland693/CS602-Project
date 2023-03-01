@@ -10,7 +10,9 @@ module.exports = async (req, res, next) => {
         if (result[0].length === 0) {
             return next(new ErrorHandler(404).getError())
         }
+        
         const data = new Exhibition().fromRowData(result[0][0]).getDisplay(form = true)
+        console.log(data)
         res.render('editExhibitionView', { active: { Admin: true }, data })
     })
 }

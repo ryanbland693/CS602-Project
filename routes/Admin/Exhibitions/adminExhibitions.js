@@ -7,8 +7,8 @@ module.exports = async (req, res, next) => {
         if (err) {
             return next(new ErrorHandler(500).getError())
         }
-        const exhibitions = result[0].map(element => new Exhibition().fromRowData(element))
-        exhibitions.forEach(element => element.FormattedDate = element.formatDate())
+        const exhibitions = result[0].map(element => new Exhibition().fromRowData(element).getDisplay(form=false))
+        console.log(exhibitions[0])
         res.render('adminExhibitionsView', { active: { Admin: true }, data: exhibitions })
     })
 }

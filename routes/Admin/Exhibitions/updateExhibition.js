@@ -8,6 +8,7 @@ module.exports = async (req, res, next) => {
         req.body.exhibitionName,
         req.body.exhibitionUrl
     ]
+    console.log(params)
     db.query('CALL EditExhibition(?, ?, ?, ?)', params, (err, result, fields) => {
         if (err) {
             return next(new ErrorHandler(500).getError())
