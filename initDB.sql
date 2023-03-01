@@ -432,6 +432,7 @@ DROP PROCEDURE IF EXISTS GetExhibitionById;
 
 CREATE PROCEDURE GetExhibitionById(pID CHAR(36))
 SELECT
+	ExhibitionId,
     ExhibitionDate,
     ExhibitionName,
     ExhibitionUrl
@@ -444,6 +445,7 @@ DROP PROCEDURE IF EXISTS GetExhibitions;
 
 CREATE PROCEDURE GetExhibitions()
 SELECT
+	ExhibitionId,
     ExhibitionDate,
     ExhibitionName,
     ExhibitionUrl
@@ -469,7 +471,7 @@ CREATE PROCEDURE EditExhibition(
     pExhibitionUrl VARCHAR(255)
 )
 UPDATE
-    exhitions
+    exhibitions
 SET
     ExhibitionDate = CAST(pExhibitionDate AS DATE),
     ExhibitionName = pExhibitionName,
